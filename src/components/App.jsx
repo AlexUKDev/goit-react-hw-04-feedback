@@ -13,6 +13,10 @@ class App extends Component {
   leaveFeedback = e => {
     const propNameToUpdate = e.target.id;
 
+    //  this.setState(prevState => ({
+    //    [e.target.id]: prevState.[e.target.id] + 1,
+    //  }));
+
     if (propNameToUpdate === 'good') {
       this.setState(prevState => ({
         good: prevState.good + 1,
