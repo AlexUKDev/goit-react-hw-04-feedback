@@ -5,7 +5,7 @@ const Statistics = ({
   neutral,
   bad,
   totalFeedback,
-  positiveFeedback,
+  positivePercentage,
 }) => {
   return (
     <StatisticsWrap>
@@ -24,10 +24,10 @@ const Statistics = ({
             <StatisticsItemWrap>Total: {totalFeedback}</StatisticsItemWrap>
           </li>
         )}
-        {positiveFeedback > 0 && (
+        {positivePercentage > 0 && (
           <li>
             <StatisticsItemWrap>
-              Positive feedback: {positiveFeedback} %
+              Positive feedback: {positivePercentage} %
             </StatisticsItemWrap>
           </li>
         )}

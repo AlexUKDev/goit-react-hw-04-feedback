@@ -48,25 +48,24 @@ class App extends Component {
           height: '100vh',
           display: 'flex',
           justifyContent: 'center',
+          flexDirection: 'column',
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
         }}
       >
-        <Section>
-          <h1>Please leave feedback</h1>
-          <FeedbackOptions
-            // options={this.state}
-            onLeaveFeedback={this.leaveFeedback}
-          />
-          <h2>Statistics</h2>
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions onLeaveFeedback={this.leaveFeedback} />
+        </Section>
+
+        <Section title={'Statistics'}>
           {this.countTotalFeedback() ? (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
               totalFeedback={this.countTotalFeedback()}
-              positiveFeedback={this.countPositiveFeedbackPercentage()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
             <Notification message={'There is no feedback'} />

@@ -1,7 +1,10 @@
 // import { WrapSection } from './Section.Styled';
 
-const Section = ({ children }) => {
-  return <div>{children}</div>;
-};
+const Section = ({ title, children }) => (
+  <div>
+    <h2>{title}</h2>
+    {children}
+  </div>
+);
 
 export default Section;
