@@ -11,25 +11,25 @@ class App extends Component {
   };
 
   leaveFeedback = e => {
-    const propNameToUpdate = e.target.id;
+    const updateValue = e.target.id;
+    // рефакторинг кода
+    this.setState(prevState => ({
+      [updateValue]: prevState[updateValue] + 1,
+    }));
 
-    //  this.setState(prevState => ({
-    //    [e.target.id]: prevState.[e.target.id] + 1,
-    //  }));
-
-    if (propNameToUpdate === 'good') {
-      this.setState(prevState => ({
-        good: prevState.good + 1,
-      }));
-    } else if (propNameToUpdate === 'neutral') {
-      this.setState(prevState => ({
-        neutral: prevState.neutral + 1,
-      }));
-    } else {
-      this.setState(prevState => ({
-        bad: prevState.bad + 1,
-      }));
-    }
+    // if (updateValue === 'good') {
+    //   this.setState(prevState => ({
+    //     good: prevState.good + 1,
+    //   }));
+    // } else if (updateValue === 'neutral') {
+    //   this.setState(prevState => ({
+    //     neutral: prevState.neutral + 1,
+    //   }));
+    // } else {
+    //   this.setState(prevState => ({
+    //     bad: prevState.bad + 1,
+    //   }));
+    // }
   };
 
   countTotalFeedback = () => {
