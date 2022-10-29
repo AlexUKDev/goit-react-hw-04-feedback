@@ -1,5 +1,7 @@
+import { NotificationMassage } from './Notification.Styled';
+
 const Notification = ({ message }) => {
-  return <h2>{message}</h2>;
+  return <NotificationMassage>{message}</NotificationMassage>;
 };
 
 export default Notification;

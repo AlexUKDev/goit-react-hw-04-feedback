@@ -8,7 +8,7 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const options = ['good', 'neutral', 'bad'];
+  const options = Object.keys({ good, neutral, bad });
 
   const leaveFeedback = e => {
     const updateValue = e.target.name;

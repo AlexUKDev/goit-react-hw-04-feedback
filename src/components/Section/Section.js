@@ -1,10 +1,10 @@
-// import { WrapSection } from './Section.Styled';
+import { Title, Wrap } from './Section.Styled';
 
 const Section = ({ title, children }) => (
-  <div>
-    <h2>{title}</h2>
+  <Wrap>
+    <Title>{title}</Title>
     {children}
-  </div>
+  </Wrap>
 );
 
 export default Section;
