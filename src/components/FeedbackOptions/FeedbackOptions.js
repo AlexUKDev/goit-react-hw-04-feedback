@@ -7,21 +7,15 @@ import {
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <FeedbackList>
-      <FeedbackItem>
-        <FeedbackBtn id="good" onClick={onLeaveFeedback}>
-          Good
-        </FeedbackBtn>
-      </FeedbackItem>
-      <FeedbackItem>
-        <FeedbackBtn id="neutral" onClick={onLeaveFeedback}>
-          Neutral
-        </FeedbackBtn>
-      </FeedbackItem>
-      <FeedbackItem>
-        <FeedbackBtn id="bad" onClick={onLeaveFeedback}>
-          Bad
-        </FeedbackBtn>
-      </FeedbackItem>
+      {options.map(itemBtn => {
+        return (
+          <FeedbackItem key={itemBtn}>
+            <FeedbackBtn name={itemBtn} onClick={onLeaveFeedback}>
+              {itemBtn}
+            </FeedbackBtn>
+          </FeedbackItem>
+        );
+      })}
     </FeedbackList>
   );
 };
