@@ -1,5 +1,6 @@
-import { Title, Wrap } from './Section.Styled';
 import PropTypes from 'prop-types';
+import { Title, Wrap } from './Section.Styled';
+
 const Section = ({ title, children }) => (
   <Wrap>
     <Title>{title}</Title>
