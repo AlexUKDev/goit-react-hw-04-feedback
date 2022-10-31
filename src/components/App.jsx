@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Statistics from 'components/Statistics/Statistics';
 import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
+import { WrapContainer } from './App.Styled';
+
 const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+  const [totalFeedback, setTotalFeedback] = useState(0);
+  const [positiveFidback, setPositiveFidback] = useState(0);
 
   const options = Object.keys({ good, neutral, bad });
 
@@ -29,49 +33,31 @@ const App = () => {
     }
   };
 
-  const countTotalFeedback = () => {
-    return good + neutral + bad;
-  };
-
-  const countPositiveFeedbackPercentage = () => {
-    let positiveFidback = 0;
-    const totalFeedback = countTotalFeedback();
-
-    positiveFidback = ((good / totalFeedback) * 100).toFixed();
-
-    return positiveFidback;
-  };
+  useEffect(() => {
+    setTotalFeedback(good + neutral + bad);
+    setPositiveFidback(((good / totalFeedback) * 100).toFixed());
+  }, [good, neutral, bad, totalFeedback]);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <WrapContainer>
       <Section title={'Please leave feedback'}>
         <FeedbackOptions onLeaveFeedback={leaveFeedback} options={options} />
       </Section>
 
       <Section title={'Statistics'}>
-        {countTotalFeedback() ? (
+        {totalFeedback ? (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            totalFeedback={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            totalFeedback={totalFeedback}
+            positivePercentage={positiveFidback}
           />
         ) : (
           <Notification message={'There is no feedback'} />
         )}
       </Section>
-    </div>
+    </WrapContainer>
   );
 };
 
